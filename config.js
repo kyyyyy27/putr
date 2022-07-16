@@ -22,7 +22,7 @@ global.owner = ['6281251549899','6281251549899','6281251549899','6281251549899']
 global.premium = ['6281251549899']
 global.packname = 'DaniBotz'
 global.author = 'Dani Official'
-global.sessionName = 'hisoka'
+global.sessionName = 'Session'
 global.prefa = ['','!','.','🐦','🐤','🗿']
 global.sp = '⭔'
 global.mess = {
@@ -40,7 +40,7 @@ global.limitawal = {
     premium: "Infinity",
     free: 100
 }
-global.thumb = fs.readFileSync('./lib/hisoka.jpg')
+global.thumb = fs.readFileSync('./lib/Dani.jpg')
 global.visoka = { url: 'https://telegra.ph/file/15209657f9d4f59c7ca1e.mp4' }
 
 let file = require.resolve(__filename)
