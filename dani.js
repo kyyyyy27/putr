@@ -103,11 +103,11 @@ module.exports = hisoka = async (hisoka, m, chatUpdate, store) => {
 	    anticall: true,
 		status: 0,
 		autobio: false,
-		templateImage: true,
+		templateImage: false,
 		templateVideo: false,
 		templateGif: false,
 		templateMsg: false,
-		templateLocation: false,
+		templateLocation: true,
 	    }
 	    
         } catch (err) {
