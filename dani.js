@@ -150,14 +150,15 @@ module.exports = hisoka = async (hisoka, m, chatUpdate, store) => {
 	  // Anti Link
         if (db.data.chats[m.chat].antilink) {
         if (budy.match(`chat.whatsapp.com`)) {
-        m.reply(`「 ANTI LINK 」\n\nKamu terdeteksi mengirim link group, maaf kamu akan di kick !`)
-        if (!isBotAdmins) return m.reply(`Ehh bot gak admin T_T`)
+        m.reply(`「 ANTI LINK 」\n\nKamu terdeteksi mengirim link group, maaf kamu akan di Tendang Dari Group
+	!`)
+        if (!isBotAdmins) return m.reply(`Maaf bot Bukan admin Group T_T`)
         let gclink = (`https://chat.whatsapp.com/`+await hisoka.groupInviteCode(m.chat))
         let isLinkThisGc = new RegExp(gclink, 'i')
         let isgclink = isLinkThisGc.test(m.text)
-        if (isgclink) return m.reply(`Ehh maaf gak jadi, karena kamu ngirim link group ini`)
-        if (isAdmins) return m.reply(`Ehh maaf kamu admin`)
-        if (isCreator) return m.reply(`Ehh maaf kamu owner bot ku`)
+        if (isgclink) return m.reply(`Ehh Soryy Kamu gak jadi DiKick, karena kamu ngirim link group ini`)
+        if (isAdmins) return m.reply(`Ehh Soryy kamu admin Group`)
+        if (isCreator) return m.reply(`Soryy Bg kamu kn Owner BotKu`)
         hisoka.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
         }
         }
@@ -1077,11 +1078,11 @@ break
                 if (args[0] === "on") {
                 if (db.data.chats[m.chat].antilink) return m.reply(`Sudah Aktif Sebelumnya`)
                 db.data.chats[m.chat].antilink = true
-                m.reply(`Antilink Aktif !`)
+                m.reply(`Antilink Berhasil Di Aktifin !`)
                 } else if (args[0] === "off") {
                 if (!db.data.chats[m.chat].antilink) return m.reply(`Sudah Tidak Aktif Sebelumnya`)
                 db.data.chats[m.chat].antilink = false
-                m.reply(`Antilink Tidak Aktif !`)
+                m.reply(`Antilink Berhasil Di Matikan !`)
                 } else {
                  let buttons = [
                         { buttonId: 'antilink on', buttonText: { displayText: 'On' }, type: 1 },
@@ -1185,27 +1186,27 @@ break
                     await sleep(1500)
                     let btn = [{
                                 urlButton: {
-                                    displayText: 'script bot',
-                                    url: 'NYARI SC? RECODE SENDIRI BG:V'
+                                    displayText: 'Instagram',
+                                    url: 'https://www.instagram.com/danibotz_official'
                                 }
                             }, {
                                 callButton: {
-                                    displayText: 'nomer telpon DaniBotz',
+                                    displayText: 'Nomer Telpon DaniBotz',
                                     phoneNumber: '+62 812-5154-9899'
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'status bot',
+                                    displayText: 'Status Bot',
                                     id: 'ping'
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText:  'contact owner',
+                                    displayText:  'Contact Owner',
                                     id: 'owner'
                                 }  
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'donasi bg',
+                                    displayText: 'Donasi lh:)',
                                     id: 'donasi'
                                 }
                             }]
@@ -1224,27 +1225,27 @@ break
 		    await sleep(1500)
 		    let btn = [{
                                 urlButton: {
-                                    displayText: 'script bot',
-                                    url: 'NYARI SC? RECODE SENDIRI BG:V'
+                                    displayText: 'Instagram',
+                                    url: 'https://www.instagram.com/danibotz_official'
                                 }
                             }, {
                                 callButton: {
-                                    displayText: 'nomer telpon DaniBotz',
+                                    displayText: 'Nomer Telpon DaniBotz',
                                     phoneNumber: '+62 812-5154-9899'
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'status bot',
+                                    displayText: 'Status Bot',
                                     id: 'ping'
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'contact owner',
+                                    displayText: 'Contact Owner',
                                     id: 'owner'
                                 }  
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'donasi bg',
+                                    displayText: 'Donasi lh:)',
                                     id: 'donasi'
                                 }
                             }]
@@ -3100,27 +3101,27 @@ Bot Ini Adalah Beta Multi-Device WhatsApp.
 └───────⭓`
                 let btn = [{
                                 urlButton: {
-                                    displayText: 'script bot',
-                                    url: 'NYARI SC? RECODE SENDIRI BG:V'
+                                    displayText: 'Instagram',
+                                    url: 'https://www.instagram.com/danibotz_official'
                                 }
                             }, {
                                 callButton: {
-                                    displayText: 'nomer telpon DaniBotz',
+                                    displayText: 'Nomer Telpon DaniBotz',
                                     phoneNumber: '+62 812-5154-9899'
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'status bot',
+                                    displayText: 'Status Bot',
                                     id: 'ping'
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'contact owner',
+                                    displayText: 'Contact Owner',
                                     id: 'owner'
                                 }  
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'donasi bg',
+                                    displayText: 'Donasi lh:)',
                                     id: 'donasi'
                                 }
                             }]
