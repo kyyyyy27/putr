@@ -48,7 +48,7 @@ module.exports = hisoka = async (hisoka, m, chatUpdate, store) => {
         const itsMe = m.sender == botNumber ? true : false
         const text = q = args.join(" ")
         const fatkuns = (m.quoted || m)
-        const quoted = (fatkuns.mtype == 'buttonsMessage') ? fatkuns[Object.keys(fatkuns)[1]] : (fatkuns.mtype == 'templateMessage') ? fatkuns.hydratedTemplate[Object.keys(fatkuns.hydratedTemplate)[1]] : (fatkuns.mtype == 'product') ? fatkuns[Object.keys(fatkuns)[0]] : m.quoted ? m.quoted : m
+        const quoted = (fatkuns.mtype == 'buttonsMessage') ? fatkuns[Object.keys(fatkuns)[1]] : (fatkuns.mtype == 'templateLocation') ? fatkuns.hydratedTemplate[Object.keys(fatkuns.hydratedTemplate)[1]] : (fatkuns.mtype == 'product') ? fatkuns[Object.keys(fatkuns)[0]] : m.quoted ? m.quoted : m
         const mime = (quoted.msg || quoted).mimetype || ''
         const qmsg = (quoted.msg || quoted)
         const isMedia = /image|video|sticker|audio/.test(mime)
