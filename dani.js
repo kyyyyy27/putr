@@ -2776,9 +2776,9 @@ Bot Ini Adalah Beta Multi-Device WhatsApp.
 > Region : *Indonesia 🇲🇨*
 > Hobyy : *......*
 > Made in : *Kalimantan Selatan*
-> Nama Asli : *Danii... *
+> Nama Asli : *Danii...*
 └───────⭓
- ~SILAHKAN LIHAT MENU BOT DIBWAH INI KA^^~
+ *SILAHKAN LIHAT MENU BOT DIBWAH INI KA^^*
 ┌──⭓ *Ｇｒｏｕｐ Ｍｅｎｕ*
 │
 │⭔ ${prefix}ʟɪɴᴋɢʀᴏᴜᴘ
