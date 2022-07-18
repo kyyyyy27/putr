@@ -541,9 +541,47 @@ Silahkan @${m.mentionedJid[0].split`@`[0]} untuk ketik terima/tolak`
                 hisoka.sendMessage(m.chat, { image: { url: 'https://telegra.ph/file/42f3bc85dfaf730523886.jpg' }, caption: `*Hai Kak ${m.pushName}*\n\n Bot Rental Prices\n⭔ 5k Per Group via Gopay\n\n Premium Price Bot\n⭔ 8k per User 1 bulan\n\nPayment can be via Paypal/link aja/pulsa\n\nFor more details, you can chat with the owner\nhttps://wa.me/6288227248988 (Owner)\n\nDonate For Me : \n\n⭔ Gopay : 088227248988` }, { quoted: m })
             }
             break
-            case 'sc': {
-                m.reply('Script : https://github.com/DikaArdnt/Hisoka-Morou')
-            }
+            case 'sc' : case 'script' : {
+            	anu = 'Script : https://github.com/DikaArdnt/Hisoka-Morou'
+            let btn = [{
+                                urlButton: {
+                                    displayText: 'Website',
+                                    url: 'https://www.asroriamin.my.id'
+                                }
+                            }, {
+                                urlButton: {
+                                    displayText: 'Grub',
+                                    url: 'https://chat.whatsapp.com/ID36jYZjlYz7E4zus4SBed'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Status Bot',
+                                    id: 'ping'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Contact Owner',
+                                    id: 'owner'
+                                }  
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Sewa Bot',
+                                    id: 'donasi'
+                                }
+                            }]
+                         let setbot = db.data.settings[botNumber]
+                        if (setbot.templateImage) {
+                        hisoka.send5ButImg(m.chat, anu, hisoka.user.name, global.thumb, btn, global.thumb)
+                        } else if (setbot.templateGif) {
+                        hisoka.send5ButGif(m.chat, anu, hisoka.user.name, global.visoka, btn, global.thumb)
+                        } else if (setbot.templateVid) {
+                        hisoka.send5ButVid(m.chat, anu, hisoka.user.name, global.visoka, btn, global.thumb)
+                        } else if (setbot.templateMsg) {
+                        hisoka.send5ButMsg(m.chat, anu, hisoka.user.name, btn)
+                        } else if (setbot.templateLocation) {
+                        hisoka.send5ButLoc(m.chat, anu, hisoka.user.name, global.thumb, btn)
+                        }
+                     }
             break
             case 'chat': {
                 if (!isCreator) throw mess.owner
@@ -814,22 +852,68 @@ Silahkan @${m.mentionedJid[0].split`@`[0]} untuk ketik terima/tolak`
             }
             break
           case 'setppbot': {
-                if (!isCreator) throw mess.owner
-                if (!/image/.test(mime)) throw `Kirim/Reply Image Dengan Caption ${prefix + command}`
-                if (/webp/.test(mime)) throw `Kirim/Reply Image Dengan Caption ${prefix + command}`
-                let media = await hisoka.downloadAndSaveMediaMessage(qmsg)
-                await hisoka.updateProfilePicture(botNumber, { url: media }).catch((err) => fs.unlinkSync(media))
-                m.reply(mess.success)
-                }
+            if (!isCreator) return m.reply(mess.owner)
+            if (!quoted) return m.reply(`Kirim/Reply Image Dengan Caption ${prefix + command}`)
+            if (!/image/.test(mime)) return m.reply(`Kirim/Reply Image Dengan Caption ${prefix + command}`)
+            if (/webp/.test(mime)) return m.reply(`Kirim/Reply Image Dengan Caption ${prefix + command}`)
+            var media = await hisoka.downloadAndSaveMediaMessage(quoted, 'ppbot.jpeg')
+            if (args[0] == `'panjang'`) {
+            var { img } = await generateProfilePicture(media)
+            await hisoka.query({
+            tag: 'iq',
+            attrs: {
+            to: botNumber,
+            type:'set',
+            xmlns: 'w:profile:picture'
+            },
+            content: [
+            {
+            tag: 'picture',
+            attrs: { type: 'image' },
+            content: img
+            }
+            ]
+            })
+            fs.unlinkSync(media)
+            m.reply(`Sukses`)
+            } else {
+            var data = await hisoka.updateProfilePicture(botNumber, { url: media })
+            fs.unlinkSync(media)
+            m.reply(`Sukses`)
+            }
+            }
                 break
            case 'setppgroup': case 'setppgrup': case 'setppgc': {
-                if (!m.isGroup) throw mess.group
-                if (!isAdmins) throw mess.admin
-                if (!/image/.test(mime)) throw `Kirim/Reply Image Dengan Caption ${prefix + command}`
-                if (/webp/.test(mime)) throw `Kirim/Reply Image Dengan Caption ${prefix + command}`
-                let media = await hisoka.downloadAndSaveMediaMessage(qmsg)
-                await hisoka.updateProfilePicture(m.chat, { url: media }).catch((err) => fs.unlinkSync(media))
-                m.reply(mess.success)
+                if (!m.isGroup) return m.reply(mess.group)
+                if (!isAdmins && !isCreator) return m.reply(mess.admin)
+                if (!quoted) return m.reply(`Kirim/Reply Image Dengan Caption ${prefix + command}`)
+                if (!/image/.test(mime)) return m.reply(`Kirim/Reply Image Dengan Caption ${prefix + command}`)
+                if (/webp/.test(mime)) return m.reply(`Kirim/Reply Image Dengan Caption ${prefix + command}`)
+                var media = await hisoka.downloadAndSaveMediaMessage(quoted, 'ppbot.jpeg')
+                if (args[0] == `'panjang'`) {
+                var { img } = await generateProfilePicture(media)
+                await hisoka.query({
+                tag: 'iq',
+                attrs: {
+                to: m.chat,
+                type:'set',
+                xmlns: 'w:profile:picture'
+                },
+                content: [
+                {
+                tag: 'picture',
+                attrs: { type: 'image' },
+                content: img
+                }
+                ]
+                })
+                fs.unlinkSync(media)
+                m.reply(`Sukses`)
+                } else {
+                var data = await hisoka.updateProfilePicture(m.chat, { url: media })
+                fs.unlinkSync(media)
+                m.reply(`Sukses`)
+                }
                 }
                 break
             case 'tagall': {
@@ -852,6 +936,11 @@ let teks = `══✪〘 *👥 Tag All* 〙✪══
             hisoka.sendMessage(m.chat, { text : q ? q : '' , mentions: participants.map(a => a.id)}, { quoted: m })
             }
             break
+               case 'ohidetag': {
+            if (!isCreator) throw mess.owner
+            if (!m.isGroup) throw mess.group
+            hisoka.sendMessage(m.chat, { text : q ? q : '' , mentions: participants.map(a => a.id)}, { quoted: m })
+            }
                case 'totag': {
                if (!m.isGroup) throw mess.group
                if (!isBotAdmins) throw mess.botAdmin
