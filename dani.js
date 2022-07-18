@@ -538,11 +538,11 @@ Silahkan @${m.mentionedJid[0].split`@`[0]} untuk ketik terima/tolak`
             }
             break
 	    case 'donasi': case 'sewabot': case 'sewa': case 'buypremium': case 'donate': {
-                hisoka.sendMessage(m.chat, { image: { url: 'https://telegra.ph/file/b33b2f04360c1b3c732c9.jpg' }, caption: `*Hai Kak ${m.pushName}*\n\n Bot Rental Prices\n⭔ 13k Per Group via E-Walet 1 Month\n⭔ 18k via pulsa 1 Month\n\n Premium Price Bot\n⭔ 8k per User 1 bulan\n\nPayment can be via Paypal/link aja/pulsa\n\nFor more details, you can chat with the owner\nhttps://wa.me/6281251549899 (Owner)\n\nDonate For Me : \n\n⭔ Gopay : 081352848936\n⭔ Dana : 081251549899` }, { quoted: m })
+                hisoka.sendMessage(m.chat, { image: { url: 'https://telegra.ph/file/42f3bc85dfaf730523886.jpg' }, caption: `*Hai Kak ${m.pushName}*\n\n Bot Rental Prices\n⭔ 5k Per Group via Gopay\n\n Premium Price Bot\n⭔ 8k per User 1 bulan\n\nPayment can be via Paypal/link aja/pulsa\n\nFor more details, you can chat with the owner\nhttps://wa.me/6288227248988 (Owner)\n\nDonate For Me : \n\n⭔ Gopay : 088227248988` }, { quoted: m })
             }
             break
             case 'sc': {
-                m.reply('Script : NYARI SC? RECODE SENDIRI BG:V\n\n JANGAN LUPA DONASI BG\n\nDonate : 6281352848936 (Gopay)\nOVO : 081352848936\nDana : 081251549899\n\n Dont Forget Donate')
+                m.reply('Script : https://github.com/DikaArdnt/Hisoka-Morou')
             }
             break
             case 'chat': {
@@ -1186,13 +1186,13 @@ break
                     await sleep(1500)
                     let btn = [{
                                 urlButton: {
-                                    displayText: 'Instagram',
-                                    url: 'https://www.instagram.com/danibotz_official'
+                                    displayText: 'Website',
+                                    url: 'https://www.asroriamin.my.id'
                                 }
                             }, {
-                                callButton: {
-                                    displayText: 'Nomer Telpon DaniBotz',
-                                    phoneNumber: '+62 812-5154-9899'
+                                urlButton: {
+                                    displayText: 'Grub',
+                                    url: 'https://chat.whatsapp.com/ID36jYZjlYz7E4zus4SBed'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -1206,7 +1206,7 @@ break
                                 }  
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Donasi lh:)',
+                                    displayText: 'Sewa Bot',
                                     id: 'donasi'
                                 }
                             }]
@@ -1225,13 +1225,13 @@ break
 		    await sleep(1500)
 		    let btn = [{
                                 urlButton: {
-                                    displayText: 'Instagram',
-                                    url: 'https://www.instagram.com/danibotz_official'
+                                    displayText: 'Website',
+                                    url: 'https://www.asroriamin.my.id'
                                 }
                             }, {
-                                callButton: {
-                                    displayText: 'Nomer Telpon DaniBotz',
-                                    phoneNumber: '+62 812-5154-9899'
+                                urlButton: {
+                                    displayText: 'Grub',
+                                    url: 'https://chat.whatsapp.com/ID36jYZjlYz7E4zus4SBed'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -1245,7 +1245,7 @@ break
                                 }  
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Donasi lh:)',
+                                    displayText: 'Sewa Bot',
                                     id: 'donasi'
                                 }
                             }]
@@ -2762,22 +2762,51 @@ let capt = `⭔ Title: ${judul}
                 ]
                 },
                 ]
-                hisoka.sendListMsg(m.chat, `Pilih aja *Bg* Setmenu nya!`, hisoka.user.name, `Hello Dani !`, `Pilih Bg`, sections, m)
+                hisoka.sendListMsg(m.chat, `Pilih aja *Bg* Setmenu nya!`, hisoka.user.name, `Hello Amin !`, `Pilih Bg`, sections, m)
                 }
             }
             break
+            case 'woi' : case 'tes' : case 'amin' : case 'bot' : {
+            	anu = 'Na-naniii ><'
+            let btn = [{
+                                urlButton: {
+                                    displayText: 'Website',
+                                    url: 'https://www.asroriamin.my.id'
+                                }
+                            }, {
+                                urlButton: {
+                                    displayText: 'Grub',
+                                    url: 'https://chat.whatsapp.com/ID36jYZjlYz7E4zus4SBed'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Status Bot',
+                                    id: 'ping'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Contact Owner',
+                                    id: 'owner'
+                                }  
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Sewa Bot',
+                                    id: 'donasi'
+                                }
+                            }
+                           break
             case 'list': case 'menu': case 'help': case '?': {
-                anu = `Hallo User DaniBotz *${pushname}*! 
-Bot Ini Adalah Beta Multi-Device WhatsApp.
+                anu = `Hallo *${pushname}*! 
+Bot Ini Di Buat Oleh *Asrori Amin*
 
 ❏ *Info Creator*
-> Name : *DaniBotz_Offc*
-> Nomor : *https://wa.me/6281251549899*
-> Umur : *17*
-> Region : *Indonesia 🇲🇨*
-> Hobyy : *......*
-> Made in : *Kalimantan Selatan*
-> Nama Asli : *Danii...*
+> Name : *Asrori Amin*
+> Nomor : *https://wa.me/6288227248988*
+> Umur : *15*
+> Kesukaan : *Loli*,*Chitoge*,*Anime Saiki Kusuo*
+> Alamat : *Kudus,Jateng,Indonesia🇮🇩*
+> Hobyy : *Belajar,Membaca*
+> Nama Panggilan : *Amin*
 └───────⭓
  *SILAHKAN LIHAT MENU BOT DIBWAH INI KA^^*
 ┌──⭓ *Ｇｒｏｕｐ Ｍｅｎｕ*
@@ -3101,13 +3130,13 @@ Bot Ini Adalah Beta Multi-Device WhatsApp.
 └───────⭓`
                 let btn = [{
                                 urlButton: {
-                                    displayText: 'Instagram',
-                                    url: 'https://www.instagram.com/danibotz_official'
+                                    displayText: 'Website',
+                                    url: 'https://www.asroriamin.my.id'
                                 }
                             }, {
-                                callButton: {
-                                    displayText: 'Nomer Telpon DaniBotz',
-                                    phoneNumber: '+62 812-5154-9899'
+                                urlButton: {
+                                    displayText: 'Grub',
+                                    url: 'https://chat.whatsapp.com/ID36jYZjlYz7E4zus4SBed'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -3121,7 +3150,7 @@ Bot Ini Adalah Beta Multi-Device WhatsApp.
                                 }  
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Donasi lh:)',
+                                    displayText: 'Sewa Bot',
                                     id: 'donasi'
                                 }
                             }]

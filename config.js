@@ -1,6 +1,6 @@
 /**
    * Create By Dani Official
-   * Contact Me on wa.me/6281251549899
+   * Contact Me on wa.me/6288227248988
    * Follow https://github.com/YTDANIBOTZ
 */
 
@@ -18,10 +18,10 @@ global.APIKeys = {
 }
 
 // Other
-global.owner = ['6281251549899','6281251549899','6281251549899','6281251549899']
-global.premium = ['6281251549899']
-global.packname = 'DaniBotz'
-global.author = 'Dani Official'
+global.owner = ['6288227248988','6288227248988','6288227248988','6288227248988']
+global.premium = ['6288227248988']
+global.packname = 'Asrori Amin'
+global.author = ''
 global.sessionName = 'hisoka'
 global.prefa = ['','!','.','🐦','🐤','🗿']
 global.sp = '⭔'
@@ -29,7 +29,7 @@ global.mess = {
     success: '✓ Success',
     admin: 'Fitur Khusus Admin Group!',
     botAdmin: 'Bot Harus Menjadi Admin Terlebih Dahulu!',
-    owner: 'Fitur Khusus Owner Bot',
+    owner: 'Lu Siapa Tcih',
     group: 'Fitur Digunakan Hanya Untuk Group!',
     private: 'Fitur Digunakan Hanya Untuk Private Chat!',
     bot: 'Fitur Khusus Pengguna Nomor Bot',
