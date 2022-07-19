@@ -1257,12 +1257,59 @@ break
                 }
              }
              break
-            case 'delete': case 'del': {
-                if (!m.quoted) throw false
-                let { chat, fromMe, id, isBaileys } = m.quoted
-                if (!isBaileys) throw 'Pesan tersebut bukan dikirim oleh bot!'
-                hisoka.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: true, id: m.quoted.id, participant: m.quoted.sender } })
-            }
+            case 'rules':  {
+            	anu = `*RULES📚*
+1. Tolong Gunakan Delay 5 Detik Untuk Menggunakan Bot
+2. Gunakan Dengan Bijak
+3. Jangan Menelpon Bot
+4. Jangan Spam Bot
+
+*PERHATIAN❗*
+1. Data WhatsApp Anda Akan Kami Simpan Di Server Kami Selama Bot Aktif
+2. Data Anda Akan Dihapus Ketika Bot Offline
+3. Kami Tidak Menyimpan Gambar, Video, File, Audio, Dan Dokumen Yang Anda Kirim
+4. Kami Tidak Akan Pernah Meminta Anda Untuk Memberikan Informasi Pribadi
+5. Jika Anda Melanggar Peraturan Maka Anda Tidak Akan Bisa Mengakses Bot Lagi Dan Bot Akan Memblokir Nomor Anda Secara Permanen
+6. Jika Menemukan Bug/Error Silahkan Langsung Lapor Ke Owner Bot!`
+             let btn = [{
+                                urlButton: {
+                                    displayText: 'Website',
+                                    url: 'https://www.asroriamin.my.id'
+                                }
+                            }, {
+                                urlButton: {
+                                    displayText: 'Grub',
+                                    url: 'https://chat.whatsapp.com/ID36jYZjlYz7E4zus4SBed'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Status Bot',
+                                    id: 'ping'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Contact Owner',
+                                    id: 'owner'
+                                }  
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Sewa Bot',
+                                    id: 'donasi'
+                                }
+                            }]
+                         let setbot = db.data.settings[botNumber]
+                        if (setbot.templateImage) {
+                        hisoka.send5ButImg(m.chat, anu, hisoka.user.name, global.thumb, btn, global.thumb)
+                        } else if (setbot.templateGif) {
+                        hisoka.send5ButGif(m.chat, anu, hisoka.user.name, global.visoka, btn, global.thumb)
+                        } else if (setbot.templateVid) {
+                        hisoka.send5ButVid(m.chat, anu, hisoka.user.name, global.visoka, btn, global.thumb)
+                        } else if (setbot.templateMsg) {
+                        hisoka.send5ButMsg(m.chat, anu, hisoka.user.name, btn)
+                        } else if (setbot.templateLocation) {
+                        hisoka.send5ButLoc(m.chat, anu, hisoka.user.name, global.thumb, btn)
+                        }
+                     }
             break
             case 'bcgc': case 'bcgroup': {
                 if (!isCreator) throw mess.owner
@@ -1751,6 +1798,30 @@ break
                 hisoka.sendMessage(m.chat, { image: { url: result }, caption: '⭔ Media Url : '+result }, { quoted: m })
             }
             break
+case 'meme': {
+m.reply(mess.wait)
+let anu = await getbuffer(`https://api.zacros.my.id/randomimg/meme`)
+hisoka.sendmessage(m.chat, { image: anu, caption: `nih  kak` }, { quoted: m})
+}
+break
+case 'darkjoke': case 'darkjokes': {
+m.reply(mess.wait)
+let anu = await getbuffer(`https://api.zacros.my.id/randomimg/darkjokes`)
+hisoka.sendmessage(m.chat, { image: anu, caption: `nih  kak` }, { quoted: m})
+}
+break
+case 'darkmeme': {
+m.reply(mess.wait)
+let anu = await getbuffer(`https://hardianto.xyz/api/darkmeme?apikey=hardianto`)
+hisoka.sendmessage(m.chat, { image: anu, caption: `nih  kak` }, { quoted: m})
+}
+break
+case 'memeindo': {
+m.reply(mess.wait)
+let anu = await getbuffer(`https://api.lolhuman.xyz/api/meme/memeindo?apikey=your apikey`)
+hisoka.sendmessage(m.chat, { image: anu, caption: `nih  kak` }, { quoted: m})
+}
+break 
             case 'anime': case 'waifu': case 'husbu': case 'neko': case 'shinobu': case 'megumin': case 'waifus': case 'nekos': case 'trap': case 'blowjob': {
                 m.reply(mess.wait)
                 hisoka.sendMessage(m.chat, { image: { url: api('zenz', '/api/random/'+command, {}, 'apikey') }, caption: 'Generate Random ' + command }, { quoted: m })
@@ -3144,6 +3215,151 @@ Bot Ini Di Buat Oleh *Asrori Amin*
                         }
                      }
             break
+            case 'command':{
+let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+                listMessage :{
+                    title: `Hi ${pushname}\n┌──⭓ 「 INFO USER 」⭓\n│\n│ Nama : ${pushname}\n│ Nomor : ${m.sender.split('@')[0]}\n│ Status : ${isCreator ? 'Owner' : 'User'}\n│\n└───────⭓\n\n┌──⭓ 「 INFO BOT 」⭓\n│\n│ Prefix : ( ${prefix} )\n│ Nama : ${global.namabot}\n│ Owner : ${global.namaowner}\n│ Mode : ${hisoka.public ? 'Public' : 'Self'}\n│ Runtime : ${runtime(process.uptime())}\n│ Lib : Baileys Multi Device\n│\n└───────⭓`,
+                    description: "\n",
+                    buttonText: "KLIK DISINI👋",
+                    footerText: "Silahkan Klik Tombol Dibawah Ini Untuk Menampilkan Menu",
+                    listType: "SINGLE_SELECT",
+                    sections: [{
+								"title": "All Menu Bot",
+								"rows": [
+									{
+										"title": "All Menu",
+										"description": "",
+										"rowId": `${prefix}allmenu`
+									}
+								]
+							},
+							{
+								"title": "List Menu Bot",
+								"rows": [
+									{
+										"title": "Group Menu",
+										"description": "",
+										"rowId": `${prefix}groupmenu`
+									},
+									{
+										"title": "Download Menu",
+										"description": "",
+										"rowId": `${prefix}downloadmenu`
+									},
+										{
+										"title": "Search Menu",
+										"description": "",
+										"rowId": `${prefix}searchmenu`
+									},
+									{
+										"title": "Meme Menu",
+										"description": "",
+										"rowId": `${prefix}mememenu`
+										},
+										{
+											"title": "Random Menu",
+										"description": "",
+										"rowId": `${prefix}randommenu`
+										},
+											{
+											"title": "Text Pro Menu",
+										"description": "",
+										"rowId": `${prefix}textpromenu`
+										},
+										{
+											"title": "Photo Oxy Menu",
+										"description": "",
+										"rowId": `${prefix}photooxymenu`
+										},
+										{
+											"title": "Ephoto Menu",
+										"description": "",
+										"rowId": `${prefix}ephotomenu`
+										},
+										{
+											"title": "Fun Menu",
+										"description": "",
+										"rowId": `${prefix}funmenu`
+										},
+										{
+											"title": "Primbon Menu",
+										"description": "",
+										"rowId": `${prefix}primbonmenu`
+										},
+										{
+											"title": "Convert Menu",
+										"description": "",
+										"rowId": `${prefix}convertmenu`
+										},
+										{
+											"title": "Main Menu",
+										"description": "",
+										"rowId": `${prefix}mainmenu`
+										},
+										{
+											"title": "Database Menu",
+										"description": "",
+										"rowId": `${prefix}databasemenu`
+										},
+										{
+											"title": "Anonymous Menu",
+										"description": "",
+										"rowId": `${prefix}anonymousmenu`
+										},
+										{
+											"title": "Islamic Menu",
+										"description": "",
+										"rowId": `${prefix}islamicmenu`
+										},
+										{
+											"title": "Voice Changer Menu",
+										"description": "",
+										"rowId": `${prefix}voicemenu`
+										},
+										{
+											"title": "Owner Menu",
+										"description": "",
+										"rowId": `${prefix}ownermenu`
+										}
+										]
+										},
+							{
+								"title": "Open Jasa Sewa Bot",
+								"rows": [
+									{
+										"title": "Sewa Bot",
+										"description": "",
+										"rowId": `${prefix}sewabot`
+									}
+								]
+							},
+							{
+								"title": "Info Tentang Owner?",
+								"rows": [
+									{
+										"title": "Chat Owner",
+										"description": "",
+										"rowId": `${prefix}owner`
+									}
+								]
+							},
+							{
+								"title": "Thanks To",
+								"rows": [
+									{
+										"title": "Contributor",
+										"description": "",
+										"rowId": `${prefix}thanksto`
+									}
+								]
+							}
+						],
+          listType: 1
+                }
+            }), { userJid: m.chat, quoted: m })
+            hisoka.relayMessage(m.chat, template.message, { messageId: template.key.id })
+            }
+            break
             case 'allmenu' : {
                 anu = `Hallo *${pushname}*! 
 Bot Ini Di Buat Oleh *Asrori Amin*
@@ -3158,6 +3374,14 @@ Bot Ini Di Buat Oleh *Asrori Amin*
 > Nama Panggilan : *Amin*
 └───────⭓
  *SILAHKAN LIHAT MENU BOT DIBAWAH INI KAK^^*
+ ┌──⭓ *Ｇｒｏｕｐ Ｍｅｎｕ*
+ │⭔ ${prefix}menu
+ │⭔ ${prefix}?
+ │⭔ ${prefix}ʀᴜʟᴇs
+ │⭔ ${prefix}sc
+ │⭔ ${prefix}help
+ │
+ └───────⭓
 ┌──⭓ *Ｇｒｏｕｐ Ｍｅｎｕ*
 │
 │⭔ ${prefix}ʟɪɴᴋɢʀᴏᴜᴘ
@@ -3480,6 +3704,1258 @@ Bot Ini Di Buat Oleh *Asrori Amin*
 │
 └───────⭓`
                 let btn = [{
+                                urlButton: {
+                                    displayText: 'Website',
+                                    url: 'https://www.asroriamin.my.id'
+                                }
+                            }, {
+                                urlButton: {
+                                    displayText: 'Grub',
+                                    url: 'https://chat.whatsapp.com/ID36jYZjlYz7E4zus4SBed'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Status Bot',
+                                    id: 'ping'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Contact Owner',
+                                    id: 'owner'
+                                }  
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Sewa Bot',
+                                    id: 'donasi'
+                                }
+                            }]
+                         let setbot = db.data.settings[botNumber]
+                        if (setbot.templateImage) {
+                        hisoka.send5ButImg(m.chat, anu, hisoka.user.name, global.thumb, btn, global.thumb)
+                        } else if (setbot.templateGif) {
+                        hisoka.send5ButGif(m.chat, anu, hisoka.user.name, global.visoka, btn, global.thumb)
+                        } else if (setbot.templateVid) {
+                        hisoka.send5ButVid(m.chat, anu, hisoka.user.name, global.visoka, btn, global.thumb)
+                        } else if (setbot.templateMsg) {
+                        hisoka.send5ButMsg(m.chat, anu, hisoka.user.name, btn)
+                        } else if (setbot.templateLocation) {
+                        hisoka.send5ButLoc(m.chat, anu, hisoka.user.name, global.thumb, btn)
+                        }
+                     }
+            break
+            case 'groupmenu': {
+                anu = `Hai Kak ${pushname}
+                
+┌──⭓ 「 INFO BOT 」⭓
+│
+│ Prefix : ( ${prefix} )
+│ Name : ${global.namabot}\n│ Owner : ${global.namaowner}
+│ Mode : ${hisoka.public ? 'Public' : 'Self'}
+│ Runtime : ${runtime(process.uptime())}
+│ Lib : Baileys Multi Device
+│
+└───────⭓
+
+┌──⭓ *GROUP MENU*
+│
+│⭔ ${prefix}linkgroup
+│⭔ ${prefix}ephemeral [option]
+│⭔ ${prefix}setppgc [image]
+│⭔ ${prefix}setname [text]
+│⭔ ${prefix}setdesc [text]
+│⭔ ${prefix}group [option]
+│⭔ ${prefix}editinfo [option]
+│⭔ ${prefix}add @user
+│⭔ ${prefix}kick @user
+│⭔ ${prefix}hidetag [text]
+│⭔ ${prefix}tagall [text]
+│⭔ ${prefix}antilink [on/off]
+│⭔ ${prefix}mute [on/off]
+│⭔ ${prefix}promote @user
+│⭔ ${prefix}demote @user
+│⭔ ${prefix}vote [text]
+│⭔ ${prefix}devote
+│⭔ ${prefix}upvote
+│⭔ ${prefix}cekvote
+│⭔ ${prefix}hapusvote
+│
+└───────⭓`
+                let btn = [{
+                                urlButton: {
+                                    displayText: 'Website',
+                                    url: 'https://www.asroriamin.my.id'
+                                }
+                            }, {
+                                urlButton: {
+                                    displayText: 'Grub',
+                                    url: 'https://chat.whatsapp.com/ID36jYZjlYz7E4zus4SBed'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Status Bot',
+                                    id: 'ping'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Contact Owner',
+                                    id: 'owner'
+                                }  
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Sewa Bot',
+                                    id: 'donasi'
+                                }
+                            }]
+                         let setbot = db.data.settings[botNumber]
+                        if (setbot.templateImage) {
+                        hisoka.send5ButImg(m.chat, anu, hisoka.user.name, global.thumb, btn, global.thumb)
+                        } else if (setbot.templateGif) {
+                        hisoka.send5ButGif(m.chat, anu, hisoka.user.name, global.visoka, btn, global.thumb)
+                        } else if (setbot.templateVid) {
+                        hisoka.send5ButVid(m.chat, anu, hisoka.user.name, global.visoka, btn, global.thumb)
+                        } else if (setbot.templateMsg) {
+                        hisoka.send5ButMsg(m.chat, anu, hisoka.user.name, btn)
+                        } else if (setbot.templateLocation) {
+                        hisoka.send5ButLoc(m.chat, anu, hisoka.user.name, global.thumb, btn)
+                        }
+                     }
+            break
+
+case 'downloadmenu': {
+                anu = `Hai Kak ${pushname}
+                
+┌──⭓ 「 INFO BOT 」⭓
+│
+│ Prefix : ( ${prefix} )
+│ Name : ${global.namabot}\n│ Owner : ${global.namaowner}
+│ Mode : ${hisoka.public ? 'Public' : 'Self'}
+│ Runtime : ${runtime(process.uptime())}
+│ Lib : Baileys Multi Device
+│
+└───────⭓
+
+┌──⭓ *DOWNLOAD MENU*
+│
+│⭔ ${prefix}tiktoknowm [url]
+│⭔ ${prefix}tiktokwm [url]
+│⭔ ${prefix}tiktokmp3 [url]
+│⭔ ${prefix}instagram [url]
+│⭔ ${prefix}twitter [url]
+│⭔ ${prefix}twittermp3 [url]
+│⭔ ${prefix}facebook [url]
+│⭔ ${prefix}pinterestdl [url]
+│⭔ ${prefix}ytmp3 [url]
+│⭔ ${prefix}ytmp4 [url]
+│⭔ ${prefix}getmusic [query]
+│⭔ ${prefix}getvideo [query]
+│⭔ ${prefix}umma [url]
+│⭔ ${prefix}joox [query]
+│⭔ ${prefix}soundcloud [url]
+│
+└───────⭓`
+         let btn = [{
+                                urlButton: {
+                                    displayText: 'Website',
+                                    url: 'https://www.asroriamin.my.id'
+                                }
+                            }, {
+                                urlButton: {
+                                    displayText: 'Grub',
+                                    url: 'https://chat.whatsapp.com/ID36jYZjlYz7E4zus4SBed'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Status Bot',
+                                    id: 'ping'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Contact Owner',
+                                    id: 'owner'
+                                }  
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Sewa Bot',
+                                    id: 'donasi'
+                                }
+                            }]
+                         let setbot = db.data.settings[botNumber]
+                        if (setbot.templateImage) {
+                        hisoka.send5ButImg(m.chat, anu, hisoka.user.name, global.thumb, btn, global.thumb)
+                        } else if (setbot.templateGif) {
+                        hisoka.send5ButGif(m.chat, anu, hisoka.user.name, global.visoka, btn, global.thumb)
+                        } else if (setbot.templateVid) {
+                        hisoka.send5ButVid(m.chat, anu, hisoka.user.name, global.visoka, btn, global.thumb)
+                        } else if (setbot.templateMsg) {
+                        hisoka.send5ButMsg(m.chat, anu, hisoka.user.name, btn)
+                        } else if (setbot.templateLocation) {
+                        hisoka.send5ButLoc(m.chat, anu, hisoka.user.name, global.thumb, btn)
+                        }
+                     }
+            break
+
+case 'searchmenu': {
+                anu = `Hai Kak ${pushname}
+                
+┌──⭓ 「 INFO BOT 」⭓
+│
+│ Prefix : ( ${prefix} )
+│ Name : ${global.namabot}\n│ Owner : ${global.namaowner}
+│ Mode : ${hisoka.public ? 'Public' : 'Self'}
+│ Runtime : ${runtime(process.uptime())}
+│ Lib : Baileys Multi Device
+│
+└───────⭓
+
+┌──⭓ *SEARCH MENU*
+│
+│⭔ ${prefix}play [query]
+│⭔ ${prefix}yts [query]
+│⭔ ${prefix}google [query]
+│⭔ ${prefix}gimage [query]
+│⭔ ${prefix}pinterest [query]
+│⭔ ${prefix}wallpaper [query]
+│⭔ ${prefix}wikimedia [query]
+│⭔ ${prefix}ytsearch [query]
+│⭔ ${prefix}ringtone [query]
+│⭔ ${prefix}stalk [option] [query]
+│
+└───────⭓`
+       let btn = [{
+                                urlButton: {
+                                    displayText: 'Website',
+                                    url: 'https://www.asroriamin.my.id'
+                                }
+                            }, {
+                                urlButton: {
+                                    displayText: 'Grub',
+                                    url: 'https://chat.whatsapp.com/ID36jYZjlYz7E4zus4SBed'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Status Bot',
+                                    id: 'ping'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Contact Owner',
+                                    id: 'owner'
+                                }  
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Sewa Bot',
+                                    id: 'donasi'
+                                }
+                            }]
+                         let setbot = db.data.settings[botNumber]
+                        if (setbot.templateImage) {
+                        hisoka.send5ButImg(m.chat, anu, hisoka.user.name, global.thumb, btn, global.thumb)
+                        } else if (setbot.templateGif) {
+                        hisoka.send5ButGif(m.chat, anu, hisoka.user.name, global.visoka, btn, global.thumb)
+                        } else if (setbot.templateVid) {
+                        hisoka.send5ButVid(m.chat, anu, hisoka.user.name, global.visoka, btn, global.thumb)
+                        } else if (setbot.templateMsg) {
+                        hisoka.send5ButMsg(m.chat, anu, hisoka.user.name, btn)
+                        } else if (setbot.templateLocation) {
+                        hisoka.send5ButLoc(m.chat, anu, hisoka.user.name, global.thumb, btn)
+                        }
+                     }
+            break
+
+case 'mememenu': {
+                anu = `Hai Kak ${pushname}
+                
+┌──⭓ 「 INFO BOT 」⭓
+│
+│ Prefix : ( ${prefix} )
+│ Name : ${global.namabot}\n│ Owner : ${global.namaowner}
+│ Mode : ${hisoka.public ? 'Public' : 'Self'}
+│ Runtime : ${runtime(process.uptime())}
+│ Lib : Baileys Multi Device
+│
+└───────⭓
+
+┌──⭓ *MEME MENU*
+│
+│⭔ ${prefix}meme
+│⭔ ${prefix}memeindo
+│⭔ ${prefix}darkjokes
+│⭔ ${prefix}darkmeme
+│
+└───────⭓`
+let btn = [{
+                                urlButton: {
+                                    displayText: 'INSTAGRAM🕺',
+                                    url: 'instagram.com/saya_asroriamin'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'RULES❗',
+                                    id: 'rules'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'OWNER??',
+                                    id: 'owner'
+                                }  
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'LIST MENU📚',
+                                    id: 'command'
+                                }
+                            }]
+                        hisoka.send5ButImg(m.chat, anu, 'Asrori Amin', global.thumb, btn)
+                     }
+            break
+
+case 'randommenu': {
+                anu = `Hai Kak ${pushname}
+                
+┌──⭓ 「 INFO BOT 」⭓
+│
+│ Prefix : ( ${prefix} )
+│ Name : ${global.namabot}\n│ Owner : ${global.namaowner}
+│ Mode : ${hisoka.public ? 'Public' : 'Self'}
+│ Runtime : ${runtime(process.uptime())}
+│ Lib : Baileys Multi Device
+│
+└───────⭓
+
+┌──⭓ *RANDOM MENU*
+│
+│⭔ ${prefix}coffe
+│⭔ ${prefix}quotesanime
+│⭔ ${prefix}motivasi
+│⭔ ${prefix}dilanquote
+│⭔ ${prefix}bucinquote
+│⭔ ${prefix}katasenja
+│⭔ ${prefix}puisi
+│⭔ ${prefix}couple
+│⭔ ${prefix}anime
+│⭔ ${prefix}waifu
+│⭔ ${prefix}husbu
+│⭔ ${prefix}neko
+│⭔ ${prefix}shinobu
+│⭔ ${prefix}waifus (nsfw)
+│⭔ ${prefix}nekos (nsfw)
+│⭔ ${prefix}trap (nsfw)
+│⭔ ${prefix}blowjob (nsfw)
+│
+└───────⭓`
+       let btn = [{
+                                urlButton: {
+                                    displayText: 'INSTAGRAM🕺',
+                                    url: 'instagram.com/saya_asroriamin'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'RULES❗',
+                                    id: 'rules'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'OWNER??',
+                                    id: 'owner'
+                                }  
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'LIST MENU📚',
+                                    id: 'command'
+                                }
+                            }]
+                        hisoka.send5ButImg(m.chat, anu, 'Asrori Amin', global.thumb, btn)
+                     }
+            break
+
+
+case 'textpromenu': {
+                anu = `Hai Kak ${pushname}
+                
+┌──⭓ 「 INFO BOT 」⭓
+│
+│ Prefix : ( ${prefix} )
+│ Name : ${global.namabot}\n│ Owner : ${global.namaowner}
+│ Mode : ${hisoka.public ? 'Public' : 'Self'}
+│ Runtime : ${runtime(process.uptime())}
+│ Lib : Baileys Multi Device
+│
+└───────⭓
+
+┌──⭓ *TEXT PRO MENU*
+│
+│⭔ ${prefix}3dchristmas
+│⭔ ${prefix}3ddeepsea
+│⭔ ${prefix}americanflag
+│⭔ ${prefix}3dscifi
+│⭔ ${prefix}3drainbow
+│⭔ ${prefix}3dwaterpipe
+│⭔ ${prefix}halloweenskeleton
+│⭔ ${prefix}sketch
+│⭔ ${prefix}bluecircuit
+│⭔ ${prefix}space
+│⭔ ${prefix}metallic
+│⭔ ${prefix}fiction
+│⭔ ${prefix}greenhorror
+│⭔ ${prefix}transformer
+│⭔ ${prefix}berry
+│⭔ ${prefix}thunder
+│⭔ ${prefix}magma
+│⭔ ${prefix}3dcrackedstone
+│⭔ ${prefix}3dneonlight
+│⭔ ${prefix}impressiveglitch
+│⭔ ${prefix}naturalleaves
+│⭔ ${prefix}fireworksparkle
+│⭔ ${prefix}matrix
+│⭔ ${prefix}dropwater
+│⭔ ${prefix}harrypotter
+│⭔ ${prefix}foggywindow
+│⭔ ${prefix}neondevils
+│⭔ ${prefix}christmasholiday
+│⭔ ${prefix}3dgradient
+│⭔ ${prefix}blackpink
+│⭔ ${prefix}gluetext
+│
+└───────⭓`
+let btn = [{
+                                urlButton: {
+                                    displayText: 'Website',
+                                    url: 'https://www.asroriamin.my.id'
+                                }
+                            }, {
+                                urlButton: {
+                                    displayText: 'Grub',
+                                    url: 'https://chat.whatsapp.com/ID36jYZjlYz7E4zus4SBed'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Status Bot',
+                                    id: 'ping'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Contact Owner',
+                                    id: 'owner'
+                                }  
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Sewa Bot',
+                                    id: 'donasi'
+                                }
+                            }]
+                         let setbot = db.data.settings[botNumber]
+                        if (setbot.templateImage) {
+                        hisoka.send5ButImg(m.chat, anu, hisoka.user.name, global.thumb, btn, global.thumb)
+                        } else if (setbot.templateGif) {
+                        hisoka.send5ButGif(m.chat, anu, hisoka.user.name, global.visoka, btn, global.thumb)
+                        } else if (setbot.templateVid) {
+                        hisoka.send5ButVid(m.chat, anu, hisoka.user.name, global.visoka, btn, global.thumb)
+                        } else if (setbot.templateMsg) {
+                        hisoka.send5ButMsg(m.chat, anu, hisoka.user.name, btn)
+                        } else if (setbot.templateLocation) {
+                        hisoka.send5ButLoc(m.chat, anu, hisoka.user.name, global.thumb, btn)
+                        }
+                     }
+            break
+
+case 'photooxymenu': {
+                anu = `Hai Kak ${pushname}
+                
+┌──⭓ 「 INFO BOT 」⭓
+│
+│ Prefix : ( ${prefix} )
+│ Name : ${global.namabot}\n│ Owner : ${global.namaowner}
+│ Mode : ${hisoka.public ? 'Public' : 'Self'}
+│ Runtime : ${runtime(process.uptime())}
+│ Lib : Baileys Multi Device
+│
+└───────⭓
+
+┌──⭓ *PHOTO OXY MENU*
+│
+│⭔ ${prefix}shadow
+│⭔ ${prefix}romantic
+│⭔ ${prefix}smoke
+│⭔ ${prefix}burnpapper
+│⭔ ${prefix}naruto
+│⭔ ${prefix}lovemsg
+│⭔ ${prefix}grassmsg
+│⭔ ${prefix}lovetext
+│⭔ ${prefix}coffecup
+│⭔ ${prefix}butterfly
+│⭔ ${prefix}harrypotter
+│⭔ ${prefix}retrolol
+│
+└───────⭓`
+let btn = [{
+                                urlButton: {
+                                    displayText: 'Website',
+                                    url: 'https://www.asroriamin.my.id'
+                                }
+                            }, {
+                                urlButton: {
+                                    displayText: 'Grub',
+                                    url: 'https://chat.whatsapp.com/ID36jYZjlYz7E4zus4SBed'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Status Bot',
+                                    id: 'ping'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Contact Owner',
+                                    id: 'owner'
+                                }  
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Sewa Bot',
+                                    id: 'donasi'
+                                }
+                            }]
+                         let setbot = db.data.settings[botNumber]
+                        if (setbot.templateImage) {
+                        hisoka.send5ButImg(m.chat, anu, hisoka.user.name, global.thumb, btn, global.thumb)
+                        } else if (setbot.templateGif) {
+                        hisoka.send5ButGif(m.chat, anu, hisoka.user.name, global.visoka, btn, global.thumb)
+                        } else if (setbot.templateVid) {
+                        hisoka.send5ButVid(m.chat, anu, hisoka.user.name, global.visoka, btn, global.thumb)
+                        } else if (setbot.templateMsg) {
+                        hisoka.send5ButMsg(m.chat, anu, hisoka.user.name, btn)
+                        } else if (setbot.templateLocation) {
+                        hisoka.send5ButLoc(m.chat, anu, hisoka.user.name, global.thumb, btn)
+                        }
+                     }
+            break
+
+case 'ephotomenu': {
+                anu = `Hai Kak ${pushname}
+                
+┌──⭓ 「 INFO BOT 」⭓
+│
+│ Prefix : ( ${prefix} )
+│ Name : ${global.namabot}\n│ Owner : ${global.namaowner}
+│ Mode : ${hisoka.public ? 'Public' : 'Self'}
+│ Runtime : ${runtime(process.uptime())}
+│ Lib : Baileys Multi Device
+│
+└───────⭓
+
+┌──⭓ *EPHOTO MENU*
+│
+│⭔ ${prefix}ffcover
+│⭔ ${prefix}crossfire
+│⭔ ${prefix}galaxy
+│⭔ ${prefix}glass
+│⭔ ${prefix}neon
+│⭔ ${prefix}beach
+│⭔ ${prefix}blackpink
+│⭔ ${prefix}igcertificate
+│⭔ ${prefix}ytcertificate
+│
+└───────⭓`
+let btn = [{
+                                urlButton: {
+                                    displayText: 'Website',
+                                    url: 'https://www.asroriamin.my.id'
+                                }
+                            }, {
+                                urlButton: {
+                                    displayText: 'Grub',
+                                    url: 'https://chat.whatsapp.com/ID36jYZjlYz7E4zus4SBed'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Status Bot',
+                                    id: 'ping'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Contact Owner',
+                                    id: 'owner'
+                                }  
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Sewa Bot',
+                                    id: 'donasi'
+                                }
+                            }]
+                         let setbot = db.data.settings[botNumber]
+                        if (setbot.templateImage) {
+                        hisoka.send5ButImg(m.chat, anu, hisoka.user.name, global.thumb, btn, global.thumb)
+                        } else if (setbot.templateGif) {
+                        hisoka.send5ButGif(m.chat, anu, hisoka.user.name, global.visoka, btn, global.thumb)
+                        } else if (setbot.templateVid) {
+                        hisoka.send5ButVid(m.chat, anu, hisoka.user.name, global.visoka, btn, global.thumb)
+                        } else if (setbot.templateMsg) {
+                        hisoka.send5ButMsg(m.chat, anu, hisoka.user.name, btn)
+                        } else if (setbot.templateLocation) {
+                        hisoka.send5ButLoc(m.chat, anu, hisoka.user.name, global.thumb, btn)
+                        }
+                     }
+            break
+
+case 'funmenu': {
+                anu = `Hai Kak ${pushname}
+                
+┌──⭓ 「 INFO BOT 」⭓
+│
+│ Prefix : ( ${prefix} )
+│ Name : ${global.namabot}\n│ Owner : ${global.namaowner}
+│ Mode : ${hisoka.public ? 'Public' : 'Self'}
+│ Runtime : ${runtime(process.uptime())}
+│ Lib : Baileys Multi Device
+│
+└───────⭓
+
+┌──⭓ *FUN MENU*
+│
+│⭔ ${prefix}apakah
+│⭔ ${prefix}bisakah
+│⭔ ${prefix}bagaimanakah
+│⭔ ${prefix}rate
+│⭔ ${prefix}kapankah
+│⭔ ${prefix}cekganteng
+│⭔ ${prefix}cekcantik
+│⭔ ${prefix}ceksange
+│⭔ ${prefix}cekgay
+│⭔ ${prefix}ceklesbi
+│⭔ ${prefix}cekmati
+│⭔ ${prefix}wangy
+│⭔ ${prefix}halah
+│⭔ ${prefix}hilih
+│⭔ ${prefix}huluh
+│⭔ ${prefix}heleh
+│⭔ ${prefix}holoh
+│⭔ ${prefix}jadian
+│⭔ ${prefix}jodohku
+│⭔ ${prefix}delttt
+│⭔ ${prefix}tictactoe
+│⭔ ${prefix}family100
+│⭔ ${prefix}tebak [option]
+│⭔ ${prefix}math [mode]
+│⭔ ${prefix}suitpvp [@tag]
+│
+└───────⭓`
+let btn = [{
+                                urlButton: {
+                                    displayText: 'Website',
+                                    url: 'https://www.asroriamin.my.id'
+                                }
+                            }, {
+                                urlButton: {
+                                    displayText: 'Grub',
+                                    url: 'https://chat.whatsapp.com/ID36jYZjlYz7E4zus4SBed'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Status Bot',
+                                    id: 'ping'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Contact Owner',
+                                    id: 'owner'
+                                }  
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Sewa Bot',
+                                    id: 'donasi'
+                                }
+                            }]
+                         let setbot = db.data.settings[botNumber]
+                        if (setbot.templateImage) {
+                        hisoka.send5ButImg(m.chat, anu, hisoka.user.name, global.thumb, btn, global.thumb)
+                        } else if (setbot.templateGif) {
+                        hisoka.send5ButGif(m.chat, anu, hisoka.user.name, global.visoka, btn, global.thumb)
+                        } else if (setbot.templateVid) {
+                        hisoka.send5ButVid(m.chat, anu, hisoka.user.name, global.visoka, btn, global.thumb)
+                        } else if (setbot.templateMsg) {
+                        hisoka.send5ButMsg(m.chat, anu, hisoka.user.name, btn)
+                        } else if (setbot.templateLocation) {
+                        hisoka.send5ButLoc(m.chat, anu, hisoka.user.name, global.thumb, btn)
+                        }
+                     }
+            break
+
+case 'primbonmenu': {
+                anu = `Hai Kak ${pushname}
+                
+┌──⭓ 「 INFO BOT 」⭓
+│
+│ Prefix : ( ${prefix} )
+│ Name : ${global.namabot}\n│ Owner : ${global.namaowner}
+│ Mode : ${hisoka.public ? 'Public' : 'Self'}
+│ Runtime : ${runtime(process.uptime())}
+│ Lib : Baileys Multi Device
+│
+└───────⭓
+
+┌──⭓ *PRIMBON MENU*
+│
+│⭔ ${prefix}nomorhoki
+│⭔ ${prefix}artimimpi
+│⭔ ${prefix}artinama
+│⭔ ${prefix}ramaljodoh
+│⭔ ${prefix}ramaljodohbali
+│⭔ ${prefix}suamiistri
+│⭔ ${prefix}ramalcinta
+│⭔ ${prefix}cocoknama
+│⭔ ${prefix}pasangan
+│⭔ ${prefix}jadiannikah
+│⭔ ${prefix}sifatusaha
+│⭔ ${prefix}rezeki
+│⭔ ${prefix}pekerjaan
+│⭔ ${prefix}nasib
+│⭔ ${prefix}penyakit
+│⭔ ${prefix}tarot
+│⭔ ${prefix}fengshui
+│⭔ ${prefix}haribaik
+│⭔ ${prefix}harisangar
+│⭔ ${prefix}harisial
+│⭔ ${prefix}nagahari
+│⭔ ${prefix}arahrezeki
+│⭔ ${prefix}peruntungan
+│⭔ ${prefix}weton
+│⭔ ${prefix}karakter
+│⭔ ${prefix}keberuntungan
+│⭔ ${prefix}memancing
+│⭔ ${prefix}masasubur
+│⭔ ${prefix}zodiak
+│⭔ ${prefix}shio
+│
+└───────⭓`
+let btn = [{
+                                urlButton: {
+                                    displayText: 'Website',
+                                    url: 'https://www.asroriamin.my.id'
+                                }
+                            }, {
+                                urlButton: {
+                                    displayText: 'Grub',
+                                    url: 'https://chat.whatsapp.com/ID36jYZjlYz7E4zus4SBed'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Status Bot',
+                                    id: 'ping'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Contact Owner',
+                                    id: 'owner'
+                                }  
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Sewa Bot',
+                                    id: 'donasi'
+                                }
+                            }]
+                         let setbot = db.data.settings[botNumber]
+                        if (setbot.templateImage) {
+                        hisoka.send5ButImg(m.chat, anu, hisoka.user.name, global.thumb, btn, global.thumb)
+                        } else if (setbot.templateGif) {
+                        hisoka.send5ButGif(m.chat, anu, hisoka.user.name, global.visoka, btn, global.thumb)
+                        } else if (setbot.templateVid) {
+                        hisoka.send5ButVid(m.chat, anu, hisoka.user.name, global.visoka, btn, global.thumb)
+                        } else if (setbot.templateMsg) {
+                        hisoka.send5ButMsg(m.chat, anu, hisoka.user.name, btn)
+                        } else if (setbot.templateLocation) {
+                        hisoka.send5ButLoc(m.chat, anu, hisoka.user.name, global.thumb, btn)
+                        }
+                     }
+            break
+
+case 'convertmenu': {
+                anu = `Hai Kak ${pushname}
+                
+┌──⭓ 「 INFO BOT 」⭓
+│
+│ Prefix : ( ${prefix} )
+│ Name : ${global.namabot}\n│ Owner : ${global.namaowner}
+│ Mode : ${hisoka.public ? 'Public' : 'Self'}
+│ Runtime : ${runtime(process.uptime())}
+│ Lib : Baileys Multi Device
+│
+└───────⭓
+
+┌──⭓ *CONVERT MENU*
+│
+│⭔ ${prefix}attp
+│⭔ ${prefix}toimage
+│⭔ ${prefix}removebg
+│⭔ ${prefix}stext
+│⭔ ${prefix}sticker
+│⭔ ${prefix}emojimix
+│⭔ ${prefix}emojimix2
+│⭔ ${prefix}tovideo
+│⭔ ${prefix}togif
+│⭔ ${prefix}tourl
+│⭔ ${prefix}tovn
+│⭔ ${prefix}tomp3
+│⭔ ${prefix}toaudio
+│⭔ ${prefix}ebinary
+│⭔ ${prefix}dbinary
+│⭔ ${prefix}styletext
+│
+└───────⭓`
+let btn = [{
+                                urlButton: {
+                                    displayText: 'Website',
+                                    url: 'https://www.asroriamin.my.id'
+                                }
+                            }, {
+                                urlButton: {
+                                    displayText: 'Grub',
+                                    url: 'https://chat.whatsapp.com/ID36jYZjlYz7E4zus4SBed'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Status Bot',
+                                    id: 'ping'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Contact Owner',
+                                    id: 'owner'
+                                }  
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Sewa Bot',
+                                    id: 'donasi'
+                                }
+                            }]
+                         let setbot = db.data.settings[botNumber]
+                        if (setbot.templateImage) {
+                        hisoka.send5ButImg(m.chat, anu, hisoka.user.name, global.thumb, btn, global.thumb)
+                        } else if (setbot.templateGif) {
+                        hisoka.send5ButGif(m.chat, anu, hisoka.user.name, global.visoka, btn, global.thumb)
+                        } else if (setbot.templateVid) {
+                        hisoka.send5ButVid(m.chat, anu, hisoka.user.name, global.visoka, btn, global.thumb)
+                        } else if (setbot.templateMsg) {
+                        hisoka.send5ButMsg(m.chat, anu, hisoka.user.name, btn)
+                        } else if (setbot.templateLocation) {
+                        hisoka.send5ButLoc(m.chat, anu, hisoka.user.name, global.thumb, btn)
+                        }
+                     }
+            break
+
+case 'mainmenu': {
+                anu = `Hai Kak ${pushname}
+                
+┌──⭓ 「 INFO BOT 」⭓
+│
+│ Prefix : ( ${prefix} )
+│ Name : ${global.namabot}\n│ Owner : ${global.namaowner}
+│ Mode : ${hisoka.public ? 'Public' : 'Self'}
+│ Runtime : ${runtime(process.uptime())}
+│ Lib : Baileys Multi Device
+│
+└───────⭓
+
+┌──⭓ *MAIN MENU*
+│
+│⭔ ${prefix}ping
+│⭔ ${prefix}owner
+│⭔ ${prefix}runtime
+│⭔ ${prefix}menu / ${prefix}help / ${prefix}?
+│⭔ ${prefix}delete
+│⭔ ${prefix}infochat
+│⭔ ${prefix}quoted
+│⭔ ${prefix}listpc
+│⭔ ${prefix}listgc
+│⭔ ${prefix}listonline
+│⭔ ${prefix}speedtest
+│
+└───────⭓`
+let btn = [{
+                                urlButton: {
+                                    displayText: 'Website',
+                                    url: 'https://www.asroriamin.my.id'
+                                }
+                            }, {
+                                urlButton: {
+                                    displayText: 'Grub',
+                                    url: 'https://chat.whatsapp.com/ID36jYZjlYz7E4zus4SBed'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Status Bot',
+                                    id: 'ping'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Contact Owner',
+                                    id: 'owner'
+                                }  
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Sewa Bot',
+                                    id: 'donasi'
+                                }
+                            }]
+                         let setbot = db.data.settings[botNumber]
+                        if (setbot.templateImage) {
+                        hisoka.send5ButImg(m.chat, anu, hisoka.user.name, global.thumb, btn, global.thumb)
+                        } else if (setbot.templateGif) {
+                        hisoka.send5ButGif(m.chat, anu, hisoka.user.name, global.visoka, btn, global.thumb)
+                        } else if (setbot.templateVid) {
+                        hisoka.send5ButVid(m.chat, anu, hisoka.user.name, global.visoka, btn, global.thumb)
+                        } else if (setbot.templateMsg) {
+                        hisoka.send5ButMsg(m.chat, anu, hisoka.user.name, btn)
+                        } else if (setbot.templateLocation) {
+                        hisoka.send5ButLoc(m.chat, anu, hisoka.user.name, global.thumb, btn)
+                        }
+                     }
+            break
+
+case 'databasemenu': {
+                anu = `Hai Kak ${pushname}
+                
+┌──⭓ 「 INFO BOT 」⭓
+│
+│ Prefix : ( ${prefix} )
+│ Name : ${global.namabot}\n│ Owner : ${global.namaowner}
+│ Mode : ${hisoka.public ? 'Public' : 'Self'}
+│ Runtime : ${runtime(process.uptime())}
+│ Lib : Baileys Multi Device
+│
+└───────⭓
+
+┌──⭓ *DATABASE MENU*
+│
+│⭔ ${prefix}setcmd
+│⭔ ${prefix}listcmd
+│⭔ ${prefix}delcmd
+│⭔ ${prefix}lockcmd
+│⭔ ${prefix}addmsg
+│⭔ ${prefix}listmsg
+│⭔ ${prefix}getmsg
+│⭔ ${prefix}delmsg
+│
+└───────⭓`
+let btn = [{
+                                urlButton: {
+                                    displayText: 'Website',
+                                    url: 'https://www.asroriamin.my.id'
+                                }
+                            }, {
+                                urlButton: {
+                                    displayText: 'Grub',
+                                    url: 'https://chat.whatsapp.com/ID36jYZjlYz7E4zus4SBed'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Status Bot',
+                                    id: 'ping'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Contact Owner',
+                                    id: 'owner'
+                                }  
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Sewa Bot',
+                                    id: 'donasi'
+                                }
+                            }]
+                         let setbot = db.data.settings[botNumber]
+                        if (setbot.templateImage) {
+                        hisoka.send5ButImg(m.chat, anu, hisoka.user.name, global.thumb, btn, global.thumb)
+                        } else if (setbot.templateGif) {
+                        hisoka.send5ButGif(m.chat, anu, hisoka.user.name, global.visoka, btn, global.thumb)
+                        } else if (setbot.templateVid) {
+                        hisoka.send5ButVid(m.chat, anu, hisoka.user.name, global.visoka, btn, global.thumb)
+                        } else if (setbot.templateMsg) {
+                        hisoka.send5ButMsg(m.chat, anu, hisoka.user.name, btn)
+                        } else if (setbot.templateLocation) {
+                        hisoka.send5ButLoc(m.chat, anu, hisoka.user.name, global.thumb, btn)
+                        }
+                     }
+            break
+
+case 'anonymousmenu': {
+                anu = `Hai Kak ${pushname}
+                
+┌──⭓ 「 INFO BOT 」⭓
+│
+│ Prefix : ( ${prefix} )
+│ Name : ${global.namabot}\n│ Owner : ${global.namaowner}
+│ Mode : ${hisoka.public ? 'Public' : 'Self'}
+│ Runtime : ${runtime(process.uptime())}
+│ Lib : Baileys Multi Device
+│
+└───────⭓
+
+┌──⭓ *ANONYMOUS MENU*
+│
+│⭔ ${prefix}anonymous
+│⭔ ${prefix}start
+│⭔ ${prefix}next
+│⭔ ${prefix}keluar
+│⭔ ${prefix}sendkontak
+│
+└───────⭓`
+let btn = [{
+                                urlButton: {
+                                    displayText: 'Website',
+                                    url: 'https://www.asroriamin.my.id'
+                                }
+                            }, {
+                                urlButton: {
+                                    displayText: 'Grub',
+                                    url: 'https://chat.whatsapp.com/ID36jYZjlYz7E4zus4SBed'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Status Bot',
+                                    id: 'ping'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Contact Owner',
+                                    id: 'owner'
+                                }  
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Sewa Bot',
+                                    id: 'donasi'
+                                }
+                            }]
+                         let setbot = db.data.settings[botNumber]
+                        if (setbot.templateImage) {
+                        hisoka.send5ButImg(m.chat, anu, hisoka.user.name, global.thumb, btn, global.thumb)
+                        } else if (setbot.templateGif) {
+                        hisoka.send5ButGif(m.chat, anu, hisoka.user.name, global.visoka, btn, global.thumb)
+                        } else if (setbot.templateVid) {
+                        hisoka.send5ButVid(m.chat, anu, hisoka.user.name, global.visoka, btn, global.thumb)
+                        } else if (setbot.templateMsg) {
+                        hisoka.send5ButMsg(m.chat, anu, hisoka.user.name, btn)
+                        } else if (setbot.templateLocation) {
+                        hisoka.send5ButLoc(m.chat, anu, hisoka.user.name, global.thumb, btn)
+                        }
+                     }
+            break
+
+case 'islamicmenu': {
+                anu = `Hai Kak ${pushname}
+                
+┌──⭓ 「 INFO BOT 」⭓
+│
+│ Prefix : ( ${prefix} )
+│ Name : ${global.namabot}\n│ Owner : ${global.namaowner}
+│ Mode : ${hisoka.public ? 'Public' : 'Self'}
+│ Runtime : ${runtime(process.uptime())}
+│ Lib : Baileys Multi Device
+│
+└───────⭓
+
+┌──⭓ *ISLAMIC MENU*
+│
+│⭔ ${prefix}iqra
+│⭔ ${prefix}hadist
+│⭔ ${prefix}alquran
+│⭔ ${prefix}juzamma
+│⭔ ${prefix}tafsirsurah
+│
+└───────⭓`
+let btn = [{
+                                urlButton: {
+                                    displayText: 'Website',
+                                    url: 'https://www.asroriamin.my.id'
+                                }
+                            }, {
+                                urlButton: {
+                                    displayText: 'Grub',
+                                    url: 'https://chat.whatsapp.com/ID36jYZjlYz7E4zus4SBed'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Status Bot',
+                                    id: 'ping'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Contact Owner',
+                                    id: 'owner'
+                                }  
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Sewa Bot',
+                                    id: 'donasi'
+                                }
+                            }]
+                         let setbot = db.data.settings[botNumber]
+                        if (setbot.templateImage) {
+                        hisoka.send5ButImg(m.chat, anu, hisoka.user.name, global.thumb, btn, global.thumb)
+                        } else if (setbot.templateGif) {
+                        hisoka.send5ButGif(m.chat, anu, hisoka.user.name, global.visoka, btn, global.thumb)
+                        } else if (setbot.templateVid) {
+                        hisoka.send5ButVid(m.chat, anu, hisoka.user.name, global.visoka, btn, global.thumb)
+                        } else if (setbot.templateMsg) {
+                        hisoka.send5ButMsg(m.chat, anu, hisoka.user.name, btn)
+                        } else if (setbot.templateLocation) {
+                        hisoka.send5ButLoc(m.chat, anu, hisoka.user.name, global.thumb, btn)
+                        }
+                     }
+            break
+
+case 'voicechangermenu': {
+                anu = `Hai Kak ${pushname}
+                
+┌──⭓ 「 INFO BOT 」⭓
+│
+│ Prefix : ( ${prefix} )
+│ Name : ${global.namabot}\n│ Owner : ${global.namaowner}
+│ Mode : ${hisoka.public ? 'Public' : 'Self'}
+│ Runtime : ${runtime(process.uptime())}
+│ Lib : Baileys Multi Device
+│
+└───────⭓
+
+┌──⭓ *VOICE CHANGER*
+│
+│⭔ ${prefix}bass
+│⭔ ${prefix}blown
+│⭔ ${prefix}deep
+│⭔ ${prefix}earrape
+│⭔ ${prefix}fast
+│⭔ ${prefix}fat
+│⭔ ${prefix}nightcore
+│⭔ ${prefix}reverse
+│⭔ ${prefix}robot
+│⭔ ${prefix}slow
+│⭔ ${prefix}tupai
+│
+└───────⭓`
+let btn = [{
+                                urlButton: {
+                                    displayText: 'Website',
+                                    url: 'https://www.asroriamin.my.id'
+                                }
+                            }, {
+                                urlButton: {
+                                    displayText: 'Grub',
+                                    url: 'https://chat.whatsapp.com/ID36jYZjlYz7E4zus4SBed'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Status Bot',
+                                    id: 'ping'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Contact Owner',
+                                    id: 'owner'
+                                }  
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Sewa Bot',
+                                    id: 'donasi'
+                                }
+                            }]
+                         let setbot = db.data.settings[botNumber]
+                        if (setbot.templateImage) {
+                        hisoka.send5ButImg(m.chat, anu, hisoka.user.name, global.thumb, btn, global.thumb)
+                        } else if (setbot.templateGif) {
+                        hisoka.send5ButGif(m.chat, anu, hisoka.user.name, global.visoka, btn, global.thumb)
+                        } else if (setbot.templateVid) {
+                        hisoka.send5ButVid(m.chat, anu, hisoka.user.name, global.visoka, btn, global.thumb)
+                        } else if (setbot.templateMsg) {
+                        hisoka.send5ButMsg(m.chat, anu, hisoka.user.name, btn)
+                        } else if (setbot.templateLocation) {
+                        hisoka.send5ButLoc(m.chat, anu, hisoka.user.name, global.thumb, btn)
+                        }
+                     }
+            break
+
+case 'ownermenu': {
+                anu = `Hai Kak ${pushname}
+                
+┌──⭓ 「 INFO BOT 」⭓
+│
+│ Prefix : ( ${prefix} )
+│ Name : ${global.namabot}\n│ Owner : ${global.namaowner}
+│ Mode : ${hisoka.public ? 'Public' : 'Self'}
+│ Runtime : ${runtime(process.uptime())}
+│ Lib : Baileys Multi Device
+│
+└───────⭓
+
+┌──⭓ *OWNER MENU*
+│
+│⭔ ${prefix}react [emoji]
+│⭔ ${prefix}chat [option]
+│⭔ ${prefix}join [link]
+│⭔ ${prefix}leave
+│⭔ ${prefix}block @user
+│⭔ ${prefix}unblock @user
+│⭔ ${prefix}bcgroup [text]
+│⭔ ${prefix}bcall [text]
+│⭔ ${prefix}setppbot [image]
+│⭔ ${prefix}setexif
+│
+└───────⭓`
+let btn = [{
+                                urlButton: {
+                                    displayText: 'Website',
+                                    url: 'https://www.asroriamin.my.id'
+                                }
+                            }, {
+                                urlButton: {
+                                    displayText: 'Grub',
+                                    url: 'https://chat.whatsapp.com/ID36jYZjlYz7E4zus4SBed'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Status Bot',
+                                    id: 'ping'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Contact Owner',
+                                    id: 'owner'
+                                }  
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Sewa Bot',
+                                    id: 'donasi'
+                                }
+                            }]
+                         let setbot = db.data.settings[botNumber]
+                        if (setbot.templateImage) {
+                        hisoka.send5ButImg(m.chat, anu, hisoka.user.name, global.thumb, btn, global.thumb)
+                        } else if (setbot.templateGif) {
+                        hisoka.send5ButGif(m.chat, anu, hisoka.user.name, global.visoka, btn, global.thumb)
+                        } else if (setbot.templateVid) {
+                        hisoka.send5ButVid(m.chat, anu, hisoka.user.name, global.visoka, btn, global.thumb)
+                        } else if (setbot.templateMsg) {
+                        hisoka.send5ButMsg(m.chat, anu, hisoka.user.name, btn)
+                        } else if (setbot.templateLocation) {
+                        hisoka.send5ButLoc(m.chat, anu, hisoka.user.name, global.thumb, btn)
+                        }
+                     }
+            break
+case 'thanksto': {
+                anu = `Hai Kak ${pushname}
+
+┌──⭓ *THANKS TO*
+│
+│⭔ Allah Swt
+│⭔ Ortu Saya
+│⭔ Dika Ardnt (Pemilik Base)
+│⭔ RzkiUhuy
+│⭔ Fatih Arridho
+│⭔ Putraa
+│⭔ Nisaa
+│⭔ Inuuu
+│⭔ Saad Bn
+│⭔ Raisya Ronove
+│⭔ Penyedia Module
+│⭔ Penyedia Rest Api
+│
+└───────⭓`
+let btn = [{
                                 urlButton: {
                                     displayText: 'Website',
                                     url: 'https://www.asroriamin.my.id'
