@@ -1359,7 +1359,7 @@ break
                 hisoka.sendTextWithMentions(m.chat, teks, m)
             }
             break
-            case prefix+'bcm': case prefix+'bcmedia':{
+            case 'bcm': case 'bcmedia': {
 if (isBan) return m.reply(mess.ban)
 if (!isCreator) return m.reply(mess.owner)
 if (!m.quoted) return m.reply(`*Reply Media Dengan Kunci ${command} video|teks\n\nList:\n\n1. video\n2. image\n3. butvd\n4. butima*`)
@@ -3471,6 +3471,8 @@ Bot Ini Di Buat Oleh *Asrori Amin*
 │⭔ ${prefix}ᴜɴʙʟᴏᴄᴋ @user
 │⭔ ${prefix}ʙᴄɢʀᴏᴜᴘ [text]
 │⭔ ${prefix}ʙᴄᴀʟʟ [text]
+│⭔ ${prefix}ʙᴄᴍ [media]
+│⭔ ${prefix}ʙᴄᴍᴇᴅɪᴀ [media]
 │⭔ ${prefix}sᴇᴛᴘᴘʙᴏᴛ [image]
 │⭔ ${prefix}sᴇᴛᴇxɪғ
 │⭔ ${prefix}sᴇᴛᴍᴇɴᴜ [option]
