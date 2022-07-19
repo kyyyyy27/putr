@@ -1359,7 +1359,7 @@ break
                 hisoka.sendTextWithMentions(m.chat, teks, m)
             }
             break
-            case 'bcm': case 'bcmedia': {
+            case prefix+'bcm': case prefix+'bcmedia': {
 if (isBan) return m.reply(mess.ban)
 if (!isCreator) return m.reply(mess.owner)
 if (!m.quoted) return m.reply(`*Reply Media Dengan Kunci ${command} video|teks\n\nList:\n\n1. video\n2. image\n3. butvd\n4. butima*`)
