@@ -3061,7 +3061,7 @@ let capt = `⭔ Title: ${judul}
                      }
             break
             case 'menu' : case 'help' : case '?' : {
-            	anu = 'Script : Hallo *${pushname}*! 
+            	anu = `Hallo *${pushname}*! 
 Bot Ini Di Buat Oleh *Asrori Amin*
 
 ❏ *Info Creator*
@@ -3071,7 +3071,7 @@ Bot Ini Di Buat Oleh *Asrori Amin*
 > Kesukaan : *Loli*,*Chitoge*
 > Alamat : *Kudus,Jateng,Indonesia🇮🇩*
 > Hobyy : *Belajar,Membaca*
-> Nama Panggilan : *Amin*'
+> Nama Panggilan : *Amin*`
             let btn = [{
                                 urlButton: {
                                     displayText: 'Website',
