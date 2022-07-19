@@ -3060,7 +3060,7 @@ let capt = `⭔ Title: ${judul}
                         }
                      }
             break
-            case 'menu' case 'help' : case '?' :{
+            case 'menu' : case 'help' : case '?' : {
             	anu = 'Script : Hallo *${pushname}*! 
 Bot Ini Di Buat Oleh *Asrori Amin*
 
