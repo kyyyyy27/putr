@@ -196,16 +196,16 @@ mentions: [num],
 fileName: `${metadata.subject}`,
 fileLength: 99999999999999,
 caption: xeonbody,
-footer: `${botname}`,
+footer: `AminBot`,
 buttons: buttons,
 headerType: 4,
 contextInfo:{externalAdReply:{
-title: `${ownername}`,
+title: `Asrori Amin`,
 body: `Don't forget to read group description`,
 mediaType:2,
 thumbnail: XeonWlcm,
-sourceUrl: `${websitex}`,
-mediaUrl: `${websitex}`
+sourceUrl: `www.asroriamin.my.id`,
+mediaUrl: `https://chat.whatsapp.com/ID36jYZjlYz7E4zus4SBed`
 }}
 }
 hisoka.sendMessage(anu.id, buttonMessage, {quoted:unicorndoc})
@@ -240,16 +240,16 @@ mentions: [num],
 fileName: `${metadata.subject}`,
 fileLength: 99999999999999,
 caption: xeonbody,
-footer: `${botname}`,
+footer: `AminBot`,
 buttons: buttons,
 headerType: 4,
 contextInfo:{externalAdReply:{
-title: `${ownername}`,
+title: `Asrori Amin`,
 body: `Bye! my friend, take care.`,
 mediaType:2,
 thumbnail: XeonLft,
-sourceUrl: `${websitex}`,
-mediaUrl: `${websitex}`
+sourceUrl: `www.asroriamin.my.id`,
+mediaUrl: `https://chat.whatsapp.com/ID36jYZjlYz7E4zus4SBed`
 }}
 }
 hisoka.sendMessage(anu.id, buttonMessage, {quoted:unicorndoc})
