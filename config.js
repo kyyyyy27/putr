@@ -18,9 +18,9 @@ global.APIKeys = {
 }
 
 // Other
-global.owner = ['6288227248988','6288227248988','6289604111770','6288227248988','6282182623238']
-global.premium = ['6288227248988']
-global.packname = 'Asrori Amin'
+global.owner = ['6282136432456']
+global.premium = ['6282136432456']
+global.packname = 'Putraa'
 global.author = ''
 global.sessionName = 'hisoka'
 global.prefa = ['','!','.','🐦','🐤','🗿']
