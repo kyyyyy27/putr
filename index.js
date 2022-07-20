@@ -163,10 +163,10 @@ async function startHisoka() {
 
                 if (anu.action == 'add') {
 	            const xmembers = metadata.participants.length
-                let unicorndoc = {key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "916909137213-1604595598@g.us"}, "message": {orderMessage: {itemCount: 9999999,status: 200, thumbnail: XeonWlcm, surface: 200, message: `${metadata.subject}`, orderTitle: 'xeon', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
-                xeonbody = `┌─❖
+                let unicorndoc = {key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "916909137213-1604595598@g.us"}, "message": {orderMessage: {itemCount: 9999999,status: 200, thumbnail: hisokaWlcm, surface: 200, message: `${metadata.subject}`, orderTitle: 'hisoka', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
+                hisokabody = `┌─❖
 │「 𝗛𝗶 👋 」
-└┬❖ 「 @${xeonName.split("@")[0]}  」
+└┬❖ 「 @${hisokaName.split("@")[0]}  」
    │✑  𝗪𝗲𝗹𝗰𝗼𝗺𝗲 𝘁𝗼 
    │✑  ${metadata.subject}
    │✑  𝗠𝗲𝗺𝗯𝗲𝗿 : 
@@ -175,7 +175,7 @@ async function startHisoka() {
    │✑ ${xtime} ${xdate}
    └───────────────┈ ⳹`
       //if you copy the code value,
-   //dont forget to put my name(Xeon) as credit
+   //dont forget to put my name(hisoka) as credit
    //you fail to put, i sue you for sure!
 let buttons = [
 {buttonId: `wkwwk`, buttonText: {displayText: 'Welcome 💐'}, type: 1}
@@ -183,11 +183,11 @@ let buttons = [
 let buttonMessage = {
 document: fs.readFileSync('./src/cheems.xlsx'),
 mimetype: docs,
-jpegThumbnail:XeonWlcm,
+jpegThumbnail:hisokaWlcm,
 mentions: [num],
 fileName: `${metadata.subject}`,
 fileLength: 99999999999999,
-caption: xeonbody,
+caption: hisokabody,
 footer: `AminBot`,
 buttons: buttons,
 headerType: 4,
@@ -195,27 +195,27 @@ contextInfo:{externalAdReply:{
 title: `Asrori Amin`,
 body: `Don't forget to read group description`,
 mediaType:2,
-thumbnail: XeonWlcm,
+thumbnail: hisokaWlcm,
 sourceUrl: `www.asroriamin.my.id`,
 mediaUrl: `https://chat.whatsapp.com/ID36jYZjlYz7E4zus4SBed`
 }}
 }
 hisoka.sendMessage(anu.id, buttonMessage, {quoted:unicorndoc})
                 } else if (anu.action == 'remove') {
-                    const xeonmembers = metadata.participants.length
-                    let unicorndoc = {key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "916909137213-1604595598@g.us"}, "message": {orderMessage: {itemCount: 9999999,status: 200, thumbnail: xeonbuffer, surface: 200, message: `${metadata.subject}`, orderTitle: 'xeon', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
-                    xeonbody = `┌─❖
+                    const hisokamembers = metadata.participants.length
+                    let unicorndoc = {key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "916909137213-1604595598@g.us"}, "message": {orderMessage: {itemCount: 9999999,status: 200, thumbnail: hisokabuffer, surface: 200, message: `${metadata.subject}`, orderTitle: 'hisoka', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
+                    hisokabody = `┌─❖
 │「 𝗚𝗼𝗼𝗱𝗯𝘆𝗲 👋 」
-└┬❖ 「 @${xeonName.split("@")[0]}  」
+└┬❖ 「 @${hisokaName.split("@")[0]}  」
    │✑  𝗟𝗲𝗳𝘁 
    │✑ ${metadata.subject}
    │✑  𝗠𝗲𝗺𝗯𝗲𝗿 : 
-   │✑ ${xeonmembers}th
+   │✑ ${hisokamembers}th
    │✑  𝗧𝗶𝗺𝗲 : 
-   │✑  ${xeontime} ${xeondate}
+   │✑  ${hisokatime} ${hisokadate}
    └───────────────┈ ⳹`
       //if you copy the code value,
-   //dont forget to put my name(Xeon) as credit
+   //dont forget to put my name(hisoka) as credit
    //you fail to put, i sue you for sure!
 let buttons = [
 {buttonId: `wkwkwk`, buttonText: {displayText: 'Sayonara 🥀'}, type: 1}
@@ -223,11 +223,11 @@ let buttons = [
 let buttonMessage = {
 document: fs.readFileSync('./src/cheems.xlsx'),
 mimetype: docs,
-jpegThumbnail:XeonLft,
+jpegThumbnail:hisokaLft,
 mentions: [num],
 fileName: `${metadata.subject}`,
 fileLength: 99999999999999,
-caption: xeonbody,
+caption: hisokabody,
 footer: `AminBot`,
 buttons: buttons,
 headerType: 4,
@@ -235,7 +235,7 @@ contextInfo:{externalAdReply:{
 title: `Asrori Amin`,
 body: `Bye! my friend, take care.`,
 mediaType:2,
-thumbnail: XeonLft,
+thumbnail: hisokaLft,
 sourceUrl: `www.asroriamin.my.id`,
 mediaUrl: `https://chat.whatsapp.com/ID36jYZjlYz7E4zus4SBed`
 }}
