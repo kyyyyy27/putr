@@ -151,96 +151,42 @@ async function startHisoka() {
                 try {
                     ppuser = await hisoka.profilePictureUrl(num, 'image')
                 } catch {
-                    ppuser = 'https://tinyurl.com/yx93l6da'
+                    ppuser = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
                 }
 
                 // Get Profile Picture Group
                 try {
                     ppgroup = await hisoka.profilePictureUrl(anu.id, 'image')
                 } catch {
-                    ppgroup = 'https://tinyurl.com/yx93l6da'
+                    ppgroup = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
                 }
 
                 if (anu.action == 'add') {
-	            const xmembers = metadata.participants.length
-                let unicorndoc = {key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "916909137213-1604595598@g.us"}, "message": {orderMessage: {itemCount: 9999999,status: 200, thumbnail: hisokaWlcm, surface: 200, message: `${metadata.subject}`, orderTitle: 'hisoka', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
-                hisokabody = `┌─❖
-│「 𝗛𝗶 👋 」
-└┬❖ 「 @${hisokaName.split("@")[0]}  」
-   │✑  𝗪𝗲𝗹𝗰𝗼𝗺𝗲 𝘁𝗼 
-   │✑  ${metadata.subject}
-   │✑  𝗠𝗲𝗺𝗯𝗲𝗿 : 
-   │✑ ${xmembers}th
-   │✑  𝗝𝗼𝗶𝗻𝗲𝗱 : 
-   │✑ ${xtime} ${xdate}
-   └───────────────┈ ⳹`
-      //if you copy the code value,
-   //dont forget to put my name(hisoka) as credit
-   //you fail to put, i sue you for sure!
-let buttons = [
-{buttonId: `wkwwk`, buttonText: {displayText: 'Welcome 💐'}, type: 1}
+                let buttons = [
+{buttonId: `me`, buttonText: {displayText: 'Hai 👋 \nWelcome Bro,Jangan Lupa Follow Ig Bot Yahh Ntar Auto Follback😁@saya_asroriamin'}, type: 1}
 ]
 let buttonMessage = {
-document: fs.readFileSync('./src/cheems.xlsx'),
-mimetype: docs,
-jpegThumbnail:hisokaWlcm,
-mentions: [num],
-fileName: `${metadata.subject}`,
-fileLength: 99999999999999,
-caption: hisokabody,
-footer: `AminBot`,
+image: { url: ppuser },
+caption: `Welcome To ${metadata.subject} @${num.split("@")[0]}\nDescription: ${metadata.desc}`,
+footer: "Asrori Amin",
+mentions:[num],
 buttons: buttons,
 headerType: 4,
-contextInfo:{externalAdReply:{
-title: `Asrori Amin`,
-body: `Don't forget to read group description`,
-mediaType:2,
-thumbnail: hisokaWlcm,
-sourceUrl: `www.asroriamin.my.id`,
-mediaUrl: `https://chat.whatsapp.com/ID36jYZjlYz7E4zus4SBed`
-}}
 }
-hisoka.sendMessage(anu.id, buttonMessage, {quoted:unicorndoc})
-                } else if (anu.action == 'remove') {
-                    const hisokamembers = metadata.participants.length
-                    let unicorndoc = {key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "916909137213-1604595598@g.us"}, "message": {orderMessage: {itemCount: 9999999,status: 200, thumbnail: hisokabuffer, surface: 200, message: `${metadata.subject}`, orderTitle: 'hisoka', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
-                    hisokabody = `┌─❖
-│「 𝗚𝗼𝗼𝗱𝗯𝘆𝗲 👋 」
-└┬❖ 「 @${hisokaName.split("@")[0]}  」
-   │✑  𝗟𝗲𝗳𝘁 
-   │✑ ${metadata.subject}
-   │✑  𝗠𝗲𝗺𝗯𝗲𝗿 : 
-   │✑ ${hisokamembers}th
-   │✑  𝗧𝗶𝗺𝗲 : 
-   │✑  ${hisokatime} ${hisokadate}
-   └───────────────┈ ⳹`
-      //if you copy the code value,
-   //dont forget to put my name(hisoka) as credit
-   //you fail to put, i sue you for sure!
-let buttons = [
-{buttonId: `wkwkwk`, buttonText: {displayText: 'Sayonara 🥀'}, type: 1}
+hisoka.sendMessage(anu.id, buttonMessage)
+                } else if (anu.action == 'remove') {                
+                let buttons = [
+{buttonId: `me`, buttonText: {displayText: 'Good Bye 👋\nGak Usah Masuk Lagi Ya Kang Ghosting😠'}, type: 1}
 ]
 let buttonMessage = {
-document: fs.readFileSync('./src/cheems.xlsx'),
-mimetype: docs,
-jpegThumbnail:hisokaLft,
-mentions: [num],
-fileName: `${metadata.subject}`,
-fileLength: 99999999999999,
-caption: hisokabody,
-footer: `AminBot`,
+image: { url: ppuser },
+caption: `@${num.split("@")[0]} Leaving To ${metadata.subject}`,
+footer: "Asrori Amin",
+mentions:[num],
 buttons: buttons,
 headerType: 4,
-contextInfo:{externalAdReply:{
-title: `Asrori Amin`,
-body: `Bye! my friend, take care.`,
-mediaType:2,
-thumbnail: hisokaLft,
-sourceUrl: `www.asroriamin.my.id`,
-mediaUrl: `https://chat.whatsapp.com/ID36jYZjlYz7E4zus4SBed`
-}}
 }
-hisoka.sendMessage(anu.id, buttonMessage, {quoted:unicorndoc})
+hisoka.sendMessage(anu.id, buttonMessage)
                 }
             }
         } catch (err) {
